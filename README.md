@@ -1,37 +1,43 @@
-# package.json Notes:
+# LAB - Class 04
 
-## For React Applications
+## Project: api-server
 
- To deploy your application at GitHub pages, you'll need to add a home page property to your package.json which points to the deployed base URL of your GitHub Pages site.
- 
- *NOTE: This will break deployments to other hosting services such as Netlify, Vercel, or AWS Amplify, so if you later wish to deploy there, remove this property completely*
- 
-     {
-       "homepage": "https://yourname.github.io/repository-name"
-     }
+### Author: Brenda Jow
 
-## Node / Express Applications
-
-### For Tests
-Your Scripts section should have the following, so that you can easily run tests locally and in your CI
-
-  "scripts": {
-    "start": "node index.js",
-    "lint": "eslint **/*.js",
-    "test": "jest --verbose --coverage",
-    "test-watch": "jest --watchAll --verbose --coverage"
-},
+### Problem Domain  
 
 
-### For NPM Modules
 
-If you are creating a module to deploy at NPM, you'll want a "bin" section that identifies the name of the global command to run and your .js file that runs when called.
+### Links and Resources
 
-"bin": {
-    "fetch": "index.js"
-}
+- [GitHub Actions ci/cd](https://github.com/rkgallaway/server-deployment-practice-d51/actions) 
+- [back-end server url](http://xyz.com) (when applicable)
+- [front-end application](http://xyz.com) (when applicable)
 
-Additionally, that file should have as it's first line, so that it'll run without having to type "node filename.js" every time
+## Setup
 
-#!/usr/bin/env node
+#### `.env` requirements (where applicable)
 
+DATABASE_URL
+PORT
+
+#### How to initialize/run your application (where applicable)
+
+- e.g. `npm start`
+
+<!-- #### How to use your library (where applicable) -->
+
+#### Features / Routes
+
+- Feature One: Details of feature
+- GET : `/hello` - specific route to hit
+
+#### Tests
+
+- How do you run tests?
+- Any tests of note?
+- Describe any tests that you did not complete, skipped, etc
+
+#### UML
+
+Link to an image of the UML for your application and response to events

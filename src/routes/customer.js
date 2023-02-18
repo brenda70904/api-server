@@ -1,16 +1,15 @@
 "use strict";
 
 const express = require("express");
-const { customerModel } = require("../models");
+const { customerCollection } = require("../models/");
 
 const router = express.Router();
 
-//get specific data by id
+// get specific data by id
 router.get("/customer/:id", async (req, res, next) => {
     const id = req.params.id;
-    console.log("@@@@")
     try {
-        const customer = await customerModel.findByPk(id);
+        const customer = await customerCollection.read(id);
         res.status(200).send(customer);
     } catch (e) {
         next(e);
@@ -20,7 +19,7 @@ router.get("/customer/:id", async (req, res, next) => {
 
 //Get All Records
 router.get("/customer", async (req, res, next) => {
-    const customers = await customerModel.findAll();
+    const customers = await customerCollection.read();
     res.status(200).send(customers);
 
 });
@@ -29,7 +28,7 @@ router.get("/customer", async (req, res, next) => {
 // create data
 router.post("/customer", async (req, res, next) => {
     try {
-        const newCustomer = await customerModel.create(req.body);
+        const newCustomer = await customerCollection.create(req.body);
         console.log(newCustomer);
         res.status(200).send(newCustomer);
     } catch (e) {
@@ -38,10 +37,11 @@ router.post("/customer", async (req, res, next) => {
 });
 
 //update
-router.put("/customer/id", async (req, res, next) => {
+router.put("/customer/:id", async (req, res, next) => {
     const { id } = req.params;
     try {
-        const updateCustomer = await customerModel.update(req.body, { where: { id } })
+        const updateCustomer = await customerCollection.update(req.body, id)
+        console.log(updateCustomer);
         res.status(200).send(updateCustomer);
     } catch (e) {
         next(console.log(e));
@@ -50,10 +50,10 @@ router.put("/customer/id", async (req, res, next) => {
 
 
 //delete
-router.delete("/customer", async (req, res, next) => {
+router.delete("/customer/:id", async (req, res, next) => {
     const { id } = req.params;
     try {
-        const deleteCustomer = await customerModel.destroy({ where: { id } });
+        const deleteCustomer = await customerCollection.delete({id});
         res.status(200).send('data deleted');
     } catch {
         next(e);

@@ -14,9 +14,10 @@ const handleError = require("./errorHandlers/500.js");
 const notFound = require("./errorHandlers/404.js");
 const customerRouter = require("./routes/customer");
 
-app.use(customerRouter);
-app.use(express.json);
 app.use(logger);
+app.use(express.json());
+app.use(customerRouter);
+
 
 app.get("/",(req, res, next)=>{
     res.status(200).send("API server");

@@ -2,7 +2,6 @@
 
 
 module.exports = (sequelizeDataBase, DataTypes) => {
-    //takes two prams, database name and a callback funnction
     return sequelizeDataBase.define("customers",{
         name:{
             type:DataTypes.STRING,
@@ -14,7 +13,7 @@ module.exports = (sequelizeDataBase, DataTypes) => {
         },
         pronouns:{
             type:DataTypes.ENUM,
-            values:["they/them", "she/her", "he,him"],
+            values:["they/them", "she/her", "he/him"],
             allowNull:true,
         }
     });

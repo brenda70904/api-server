@@ -1,6 +1,5 @@
 "use strict";
 
-require("dotenv").config();
 const {start} = require("./src/server.js");
 const {sequelizeDataBase} = require("./src/models");
 
